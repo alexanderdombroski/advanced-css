@@ -1,0 +1,27 @@
+{
+  "name": "advanced-css",
+  "version": "1.0.0",
+  "description": "Projects for WDD-331R",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexanderdombroski/advanced-css.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/alexanderdombroski/advanced-css/issues"
+  },
+  "homepage": "https://github.com/alexanderdombroski/advanced-css#readme",
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
+    "prettier": "^3.8.1"
+  }
+}
