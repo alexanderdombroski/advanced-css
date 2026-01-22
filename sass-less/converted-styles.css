@@ -1,3 +1,13 @@
+/* 
+  The process of converting less and sass was pretty straightforward, as modern CSS has many 
+  drop in replacements for older sass solutions. Mixins didn't have one though. Because they
+  are only used one time, a simple copy & paste works great. Utility classes mimic the 
+  reusable nature, but would require modifying the HMTL. The base class is better if the mixin
+  is used several times in the code.
+
+  Preprocessors still have some advantages, like loops or the mixins.
+*/
+
 /* ===== CONVERSION FROM SASS ===== */
 
 :root {
@@ -51,6 +61,104 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
+
+  &.btn-primary {
+    background-color: var(--secondary-color);
+
+    &:hover {
+      background-color: color-mix(
+        in oklab,
+        var(--secondary-color) 92%,
+        black 8%
+      );
+    }
+  }
+
+  &.btn-danger {
+    background-color: var(--accent-color);
+
+    &:hover {
+      background-color: color-mix(in oklab, var(--accent-color) 92%, black 8%);
+    }
+  }
+}
+
+/* Card component */
+.card {
+  background: white;
+  border-radius: var(--border-radius);
+  padding: calc(var(--base-spacing) * 1.5);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  .card-header {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-bottom: var(--base-spacing);
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: calc(var(--base-spacing) * 0.5);
+  }
+
+  .card-body {
+    color: #333;
+    line-height: 1.6;
+  }
+}
+
+/* ===== CONVERSION FROM LESS ===== */
+
+/* Brand colors and spacing */
+:root {
+  --primary-color: #2c3e50;
+  --secondary-color: #3498db;
+  --accent-color: #e74c3c;
+  --base-spacing: 1rem;
+  --border-radius: 0.5rem;
+}
+
+/* Can also make mixins just base classes instead of copy pasting */
+.button-base {
+  padding: var(--base-spacing) calc(var(--base-spacing) * 1.5);
+  border: none;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Navigation component */
+.navigation {
+  background-color: var(--primary-color);
+  padding: var(--base-spacing);
+
+  .nav-list {
+    display: flex;
+    gap: var(--base-spacing);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      a {
+        color: white;
+        text-decoration: none;
+        padding: calc(var(--base-spacing) * 0.5);
+        border-radius: calc(var(--border-radius) * 0.5);
+
+        &:hover {
+          background-color: color-mix(var(--primary-color) 90%, white 10%);
+        }
+
+        &.active {
+          background-color: var(--secondary-color);
+        }
+      }
+    }
+  }
+}
+
+/* Button styles */
+.btn {
+  /* .button-base(); Add button base class to components that use button */
 
   &.btn-primary {
     background-color: var(--secondary-color);
