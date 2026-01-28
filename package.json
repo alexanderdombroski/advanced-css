@@ -12,16 +12,14 @@
     "url": "git+https://github.com/alexanderdombroski/advanced-css.git"
   },
   "keywords": [],
-  "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/alexanderdombroski/advanced-css/issues"
   },
   "homepage": "https://github.com/alexanderdombroski/advanced-css#readme",
   "devDependencies": {
     "husky": "^9.1.7",
-    "less": "^4.5.1",
     "lint-staged": "^16.2.7",
     "prettier": "^3.8.1"
   }
