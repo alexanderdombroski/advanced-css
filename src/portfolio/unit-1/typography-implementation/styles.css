@@ -1,0 +1,108 @@
+/* Font declarations for Source Sans 3 default and italic variable font */
+@font-face {
+  font-family: "Source Sans 3";
+  src: url("./fonts/SourceSans3-VariableFont_wght.ttf") format("truetype");
+  font-weight: 200 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Source Sans 3";
+  src: url("./fonts/SourceSans3-Italic-VariableFont_wght.ttf")
+    format("truetype");
+  font-weight: 200 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  --font-family-base: "Source Sans 3", system-ui, sans-serif;
+
+  /* custom properties for typography scale */
+  --font-size-base: 1rem;
+  /* 1.2 won't scale up too quickly, but is large enough for a noticeable difference */
+  --scale-ratio: 1.2;
+
+  --font-size-sm: calc(var(--font-size-base) / var(--scale-ratio));
+  --font-size-md: var(--font-size-base);
+  --font-size-lg: calc(var(--font-size-base) * var(--scale-ratio));
+  --font-size-xl: calc(var(--font-size-lg) * var(--scale-ratio));
+  --font-size-2xl: calc(var(--font-size-xl) * var(--scale-ratio));
+  --font-size-3xl: calc(var(--font-size-2xl) * var(--scale-ratio));
+
+  /* custom property for typography spacing */
+  --rhythm: 0.5rem;
+}
+
+/* Base typography and heading styles */
+body {
+  margin-inline: auto;
+  font-family: var(--font-family-base);
+  font-size: clamp(var(--font-size-md), 1.5vw, var(--font-size-lg));
+  line-height: 1.6;
+  font-weight: 400;
+  color: #111;
+
+  max-width: 66ch;
+
+  & h1,
+  & h2,
+  & h3,
+  & h4 {
+    font-family: var(--font-family-base);
+    font-weight: 700;
+    line-height: calc(var(--rhythm) * 4);
+    margin: 0 0 calc(var(--rhythm) * 2);
+    max-width: 45ch;
+  }
+
+  /* Individual heading sizes */
+  & h1 {
+    font-size: clamp(var(--font-size-2xl), 2.5vw, var(--font-size-3xl));
+  }
+
+  & h2 {
+    font-size: clamp(var(--font-size-xl), 2.25vw, var(--font-size-2xl));
+  }
+
+  & h3 {
+    font-size: clamp(var(--font-size-lg), 2vw, var(--font-size-xl));
+  }
+
+  & h4 {
+    font-size: clamp(var(--font-size-md), 1.75vw, var(--font-size-lg));
+  }
+
+  /* Links and paragraph spacing */
+  & a,
+  & p {
+    margin: 0 0 calc(var(--rhythm) * 3);
+    max-width: 75ch;
+  }
+
+  & small {
+    font-size: clamp(var(--font-size-sm), 1vw, var(--font-size-md));
+    max-width: 50ch;
+    line-height: calc(var(--rhythm) * 2);
+    margin-bottom: calc(var(--rhythm) * 2);
+  }
+}
+
+/* Responsive typography adjustments for smaller screens */
+@media (max-width: 600px) {
+  body,
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  small {
+    /* small screens can use full width */
+    max-width: 100%;
+  }
+
+  body {
+    padding: 1rem;
+  }
+}
