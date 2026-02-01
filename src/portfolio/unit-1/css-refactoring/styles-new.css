@@ -13,24 +13,38 @@
  */
 
 :root {
+  /* Colors */
   --primary-color: #667eea;
+  --secondary-color: #764ba2;
   --accent-color: #ffd700;
+
   --background-color: #f8f9fa;
+  --font-bolded-color: #333;
+  --font-faded-color: #666;
+
+  --box-shadow-color: rgb(0 0 0 / 0.1);
+  --box-shadow-color-dark: rgb(0 0 0 / 0.15);
+
+  /* Dynamic Fonts - Spread of 704px (44rem) - 832px (52rem) */
+  --font-size-lg: clamp(2rem, calc(-0.75rem + 6.25vw), 2.5rem);
+  --font-size-hero: clamp(2rem, calc(-3.5rem + 12.5vw), 3rem);
+
+  --border-radius: 0.5rem;
 }
 
 /* Reset and Base Styles */
-* {
+:where(*) {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-a {
+:where(a) {
   text-decoration: none;
   color: inherit;
 }
 
-button {
+:where(button) {
   font-family: inherit;
   cursor: pointer;
 }
@@ -41,12 +55,21 @@ body {
     -apple-system,
     sans-serif;
   line-height: 1.6;
-  color: #333;
+  color: var(--font-bolded-color);
 
-  /* Header and Navigation - Repetitive Patterns */
+  /* Header and Navigation */
+  & :is(.nav-link, .footer-link) {
+    transition: color 0.3s;
+  }
+
+  & :is(.nav-link, .btn):focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 3px;
+  }
+
   & .site-header {
     background-color: white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px var(--box-shadow-color);
     position: sticky;
     top: 0;
     z-index: 100;
@@ -59,6 +82,11 @@ body {
       justify-content: space-between;
       align-items: center;
 
+      @media (max-width: 768px) {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
       & .logo {
         font-size: 1.5rem;
         font-weight: 700;
@@ -70,19 +98,17 @@ body {
         display: flex;
         gap: 2rem;
 
+        @media (max-width: 768px) {
+          gap: 1rem;
+        }
+
         & .nav-item {
           & .nav-link {
-            color: #666;
+            color: var(--font-faded-color);
             font-weight: 500;
-            transition: color 0.3s;
 
             &:hover {
               color: var(--primary-color);
-            }
-
-            &:focus {
-              outline: 2px solid var(--primary-color);
-              outline-offset: 4px;
             }
 
             &.active {
@@ -96,7 +122,11 @@ body {
   }
   /* Hero Section - Flat Structure */
   & .hero {
-    background: linear-gradient(135deg, var(--primary-color) 0%, #764ba2 100%);
+    background: linear-gradient(
+      135deg,
+      var(--primary-color) 0%,
+      var(--secondary-color) 100%
+    );
     padding: 6rem 2rem;
     text-align: center;
 
@@ -105,29 +135,24 @@ body {
       margin: 0 auto;
 
       & .hero-title {
-        font-size: 3rem;
+        font-size: var(--font-size-hero);
         color: white;
         margin-bottom: 1rem;
       }
 
-      /* TODO - should this be in hero? */
-      & .section-title {
-        color: white;
-      }
-
       & .hero-subtitle {
         font-size: 1.25rem;
-        color: rgba(255, 255, 255, 0.9);
+        color: rgb(255 255 255 / 0.9);
         margin-bottom: 2rem;
       }
     }
   }
 
-  /* Buttons - Lots of Repetition */
+  /* Buttons */
   & .btn {
     padding: 0.75rem 2rem;
     border: none;
-    border-radius: 0.5rem;
+    border-radius: var(--border-radius);
     font-size: 1rem;
     font-weight: 600;
     transition:
@@ -135,12 +160,7 @@ body {
       box-shadow 0.2s;
     &:hover {
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    }
-
-    &:focus {
-      outline: 2px solid var(--primary-color);
-      outline-offset: 2px;
+      box-shadow: 0 4px 12px var(--box-shadow-color-dark);
     }
 
     &.btn-primary {
@@ -159,7 +179,7 @@ body {
     }
 
     &.btn-secondary:hover {
-      background-color: rgba(255, 255, 255, 0.1);
+      background-color: rgb(255 255 255 / 0.1);
     }
   }
 
@@ -170,17 +190,12 @@ body {
     padding: 4rem 2rem;
   }
 
-  /* Section Titles - Repetitive */
+  /* Section Titles */
   & .section-title {
-    font-size: 2.5rem;
+    font-size: var(--font-size-lg);
     text-align: center;
     margin-bottom: 3rem;
-    color: #333;
-  }
-
-  /* TODO - do sections */
-  .testimonials .section-title {
-    color: var(--primary-color);
+    color: var(--font-bolded-color);
   }
 
   /* Features Section - Cards with Images */
@@ -193,17 +208,17 @@ body {
       gap: 2rem;
 
       & .card {
-        background: white;
-        border-radius: 0.5rem;
+        background-color: white;
+        border-radius: var(--border-radius);
         overflow: hidden;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 2px 8px var(--box-shadow-color);
         transition:
           transform 0.3s,
           box-shadow 0.3s;
 
         &:hover {
           transform: translateY(-4px);
-          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 8px 24px var(--box-shadow-color-dark);
         }
 
         /* Cards with images need different layout */
@@ -224,11 +239,11 @@ body {
           & .card-title {
             font-size: 1.5rem;
             margin-bottom: 0.5rem;
-            color: #333;
+            color: var(--font-bolded-color);
           }
 
           & .card-text {
-            color: #666;
+            color: var(--font-faded-color);
             margin-bottom: 1rem;
             line-height: 1.6;
           }
@@ -249,7 +264,11 @@ body {
 
   /* Testimonials - More Repetition */
   & .testimonials {
-    background: white;
+    background-color: white;
+
+    & .section-title {
+      color: var(--primary-color);
+    }
 
     & .testimonial-grid {
       display: grid;
@@ -259,7 +278,7 @@ body {
       & .testimonial {
         background-color: var(--background-color);
         padding: 2rem;
-        border-radius: 0.5rem;
+        border-radius: var(--border-radius);
         border-left: 4px solid var(--primary-color);
 
         & .testimonial-text {
@@ -272,7 +291,7 @@ body {
         & .testimonial-author {
           display: block;
           font-weight: 600;
-          color: #333;
+          color: var(--font-bolded-color);
           margin-bottom: 0.25rem;
           font-style: normal;
         }
@@ -288,7 +307,7 @@ body {
 
   /* Stats Section */
   & .stats {
-    background: var(--primary-color);
+    background-color: var(--primary-color);
     padding: 4rem 2rem;
 
     & .stats-grid {
@@ -314,11 +333,7 @@ body {
           font-size: 1.125rem;
         }
 
-        &.highlight .stat-number {
-          color: var(--accent-color);
-        }
-
-        &.highlight .stat-label {
+        &.highlight :is(.stat-number, .stat-label) {
           color: var(--accent-color);
         }
       }
@@ -327,12 +342,16 @@ body {
 
   /* CTA Section */
   & .cta {
-    background: linear-gradient(135deg, #764ba2 0%, var(--primary-color) 100%);
+    background: linear-gradient(
+      135deg,
+      var(--secondary-color) 0%,
+      var(--primary-color) 100%
+    );
     padding: 6rem 2rem;
     text-align: center;
 
     & .cta-title {
-      font-size: 2.5rem;
+      font-size: var(--font-size-lg);
       text-align: center;
       margin-bottom: 1rem;
       color: white;
@@ -340,7 +359,7 @@ body {
 
     & .cta-text {
       font-size: 1.25rem;
-      color: rgba(255, 255, 255, 0.9);
+      color: rgb(255 255 255 / 0.9);
       margin-bottom: 2rem;
       max-width: 600px;
       margin-inline: auto;
@@ -354,9 +373,9 @@ body {
     }
   }
 
-  /* Footer - Lots of Nesting Opportunities */
+  /* Footer */
   & .site-footer {
-    background: #1a1a1a;
+    background-color: #1a1a1a;
     color: white;
     padding: 3rem 2rem 1rem;
 
@@ -384,7 +403,6 @@ body {
 
             & .footer-link {
               color: #999;
-              transition: color 0.3s;
               &:hover {
                 color: var(--primary-color);
               }
@@ -394,36 +412,12 @@ body {
       }
     }
     & .footer-bottom {
-      border-top: 1px solid #333;
+      border-top: 1px solid var(--font-bolded-color);
       padding-top: 2rem;
       text-align: center;
       & .copyright {
-        color: #666;
+        color: var(--font-faded-color);
       }
     }
-  }
-}
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-  .hero .hero-content .hero-title {
-    font-size: 2rem;
-  }
-
-  .section-title {
-    font-size: 2rem;
-  }
-
-  .cta .cta-title {
-    font-size: 2rem;
-  }
-
-  #navigation {
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  #navigation .nav-list {
-    gap: 1rem;
   }
 }
