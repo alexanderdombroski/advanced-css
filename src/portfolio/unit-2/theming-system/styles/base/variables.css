@@ -1,0 +1,11 @@
+/* https://color.adobe.com/Water-&-Rust-color-theme-1478205/ */
+
+:root {
+  --primary-color: #e3371e;
+  --secondary-color: #ff7a48;
+  --accent-color: #0593a2;
+  --accent2-color: #103778;
+
+  --font-dark: #151f30;
+  --font-light: #c7d2de;
+}
