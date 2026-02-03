@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Custom Properties Practice</title>
+  </head>
+  <body>
+    <style>
+      /* 
+        What advantages did you find in using custom properties versus hard-coded values?
+          > Custom properties were very reusable. I changed some of my colors mid way through, and it
+          the consitent usage of css variables made it easy to switch.
+
+        How did clamp() make responsive design easier or harder?
+          > clamp is nice for small tweaks to adjust sizes as the site grew bigger. I feel media 
+          queries are much more powerful though, as full properties can be changed instead of size.
+
+        What challenges did you encounter with scoped custom properties for component variations?
+          > CSS nesting made custom property variations feel more scoped and understandable. Initially I duplicated 
+          css when applying the hover color mix. Reading suggestions again, I realized creating another property and
+          overriding it would be a better pattern.
+
+        How does the theme switching mechanism demonstrate the power of custom properties?
+          > Similar to how I can change all of the properties in the root to change my theme, I could also define a more specific
+          property to override the theme. Applying dark colors was a great use for this. It feels almost as powerful as
+          using built in light-dark() function to detect the system theme.
+      */
+
+      /* Basic reset - you can keep or modify this */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* Define your custom properties in :root */
+      :root {
+        /* Colors */
+        --color-primary: #00cc81;
+        --color-secondary: #f2cdac;
+        --color-background: #ededed;
+        --color-text: #262728;
+
+        /* Spacing scale */
+        --spacing-xs: clamp(0.25rem, 1vw, 0.5rem);
+        --spacing-sm: clamp(0.5rem, 2vw, 1rem);
+        --spacing-md: clamp(1rem, 3vw, 1.5rem);
+        --spacing-lg: clamp(1.5rem, 4vw, 2.5rem);
+        --spacing-xl: clamp(2rem, 6vw, 4rem);
+
+        /* Typography scale */
+        --font-size-base: clamp(1rem, 2.5vw, 1.125rem);
+        --font-size-xs: calc(var(--font-size-base) * 0.75);
+        --font-size-md: calc(var(--font-size-base) * 1.125);
+        --font-size-lg: calc(var(--font-size-base) * 1.25);
+        --font-size-xl: calc(var(--font-size-base) * 1.5);
+
+        /* Layout values */
+        --max-width: 75rem; /* 1200px */
+        --border-radius: 0.5rem;
+        --gap: var(--spacing-sm);
+      }
+
+      /* Define dark theme */
+      [data-theme="dark"] {
+        /* Dark theme color overrides */
+        --color-primary: #28726d;
+        --color-secondary: #cfa57a;
+        --color-background: #2a2e2e;
+        --color-text: #e6e8e8;
+      }
+
+      /* Your component styles below */
+
+      body {
+        background-color: var(--color-background);
+        color: var(--color-text);
+        font-size: var(--font-size-base);
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+
+        & > * {
+          max-width: var(--max-width);
+          margin: 0 auto;
+        }
+
+        & h1 {
+          font-size: var(--font-size-xl);
+          margin-top: var(--spacing-lg);
+        }
+
+        & h2 {
+          font-size: var(--font-size-lg);
+          margin-top: var(--spacing-sm);
+        }
+
+        & h3,
+        & h4 {
+          font-size: var(--font-size-sm);
+          margin-top: var(--spacing-sm);
+        }
+
+        & p {
+          margin-top: var(--spacing-xs);
+        }
+
+        .btn {
+          --btn-background: var(--color-primary);
+          &.btn-secondary {
+            --btn-background: var(--color-background);
+          }
+
+          background-color: var(--btn-background);
+          color: var(--color-text);
+          padding: var(--spacing-sm);
+          border-radius: var(--border-radius);
+          border-width: 0.2rem;
+          cursor: pointer;
+          transition: background 0.2s;
+
+          &:hover {
+            background-color: color-mix(
+              in oklab,
+              var(--btn-background) 90%,
+              black 10%
+            );
+          }
+
+          &:active {
+            background-color: color-mix(
+              in oklab,
+              var(--btn-background) 80%,
+              black 20%
+            );
+          }
+        }
+
+        .nav {
+          background-color: var(--color-secondary);
+          color: var(--color-text);
+          width: 100%;
+
+          & .nav-container {
+            padding: var(--spacing-md);
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            & .nav-logo {
+              margin-top: 0;
+            }
+          }
+
+          & .nav-list {
+            display: flex;
+            flex-direction: row;
+            gap: var(--gap);
+
+            & li {
+              list-style-type: none;
+              align-content: center;
+            }
+
+            & a,
+            & a:visited {
+              color: var(--color-text);
+              text-decoration: none;
+              padding: var(--spacing-md);
+
+              &:hover {
+                text-decoration: underline;
+              }
+            }
+          }
+        }
+
+        & .main {
+          & .hero-text {
+            margin-bottom: var(--spacing-sm);
+          }
+
+          & .features {
+            & h2 {
+              margin-bottom: var(--spacing-sm);
+            }
+          }
+
+          & .cta {
+            margin-bottom: var(--spacing-sm);
+            & p {
+              margin-bottom: var(--spacing-sm);
+            }
+          }
+        }
+
+        & .card {
+          --card-bg: var(--color-background);
+          --card-text: var(--color-text);
+          --card-border: var(--color-primary);
+
+          background: var(--card-bg);
+          color: var(--card-text);
+          border-left: 4px solid var(--card-border);
+          padding: var(--spacing-md);
+          border-radius: var(--border-radius);
+
+          transition:
+            transform 0.25s ease,
+            box-shadow 0.25s ease;
+          &:hover {
+            transform: translateX(-1px) scaleX(1.005);
+            box-shadow: 0 6px 16px
+              color-mix(in oklab, var(--color-text) 50%, black 50%);
+          }
+
+          &.card-featured {
+            --card-bg: var(--color-primary);
+            font-style: bold;
+            --card-border: color-mix(
+              in oklab,
+              var(--color-primary) 80%,
+              black 20%
+            );
+          }
+        }
+
+        & .footer {
+          width: 100%;
+          height: 5rem;
+          background-color: var(--color-secondary);
+          padding: var(--spacing-md);
+          margin-top: auto;
+        }
+      }
+    </style>
+    <nav class="nav">
+      <div class="nav-container">
+        <h2 class="nav-logo">Design System</h2>
+        <ul class="nav-list">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#services" class="nav-link">Services</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="main">
+      <section class="hero">
+        <div class="container">
+          <h1>Custom Properties & Math Functions</h1>
+          <p class="hero-text">
+            A responsive, themeable design system built entirely with modern
+            CSS. This page demonstrates the power of custom properties and math
+            functions for creating flexible, maintainable interfaces.
+          </p>
+          <div class="button-group">
+            <button class="btn">Get Started</button>
+            <button class="btn btn-secondary">Learn More</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="features">
+        <div class="container">
+          <h2>Features</h2>
+          <div class="card-grid">
+            <article class="card">
+              <h3>Fluid Typography</h3>
+              <p>
+                Text scales smoothly across all viewport sizes using clamp() for
+                responsive sizing without media queries.
+              </p>
+            </article>
+
+            <article class="card card-featured">
+              <h3>Custom Properties</h3>
+              <p>
+                A complete design system built with CSS variables that cascade
+                through the DOM and enable dynamic theming.
+              </p>
+            </article>
+
+            <article class="card">
+              <h3>Component Variations</h3>
+              <p>
+                Scoped custom properties create variations without duplicating
+                CSS, keeping code maintainable and DRY.
+              </p>
+            </article>
+
+            <article class="card card-muted">
+              <h3>Theme Support</h3>
+              <p>
+                Light and dark themes that automatically update all components
+                by redefining root-level custom properties.
+              </p>
+            </article>
+
+            <article class="card">
+              <h3>Responsive Spacing</h3>
+              <p>
+                Fluid spacing scales with viewport size, maintaining visual
+                hierarchy and breathing room on all devices.
+              </p>
+            </article>
+
+            <article class="card">
+              <h3>Math Functions</h3>
+              <p>
+                Calc and clamp functions enable dynamic calculations and fluid
+                sizing for truly responsive layouts.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta">
+        <div class="container">
+          <h2>Ready to Build?</h2>
+          <p>
+            Start creating your own design systems with custom properties and
+            modern CSS math functions.
+          </p>
+          <button class="btn">Start Building</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2024 Design System Practice. Built with modern CSS.</p>
+      </div>
+    </footer>
+  </body>
+</html>

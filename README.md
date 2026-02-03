@@ -4,5 +4,7 @@ Includes a [portfolio](https://alexanderdombroski.github.io/dombroski-wdd331-por
 
 Projects for [WDD-331R](https://byui-cse.github.io/wdd331r/)
 
-- Convert Sass and Less to Native Nested CSS - [./sass-less](./src/sass-less)
-- Custom Properties and Math Functions - [./custom-properties](./src/custom-properties)
+- [Convert Sass and Less to Native Nested CSS](./src/portfolio/unit-0/sass-less)
+- [Custom Properties and Math Functions](./src/portfolio/unit-0/custom-properties)
+- [Refactoring CSS using modern selectors and nesting](./src/portfolio/unit-1/css-refactoring)
+- [Creating a dynamic styleset for custom font faces](./src/portfolio/unit-1/typography-implementation)
