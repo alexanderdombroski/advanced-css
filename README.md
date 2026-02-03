@@ -1,4 +1,4 @@
-# advanced-css
+# Advanced CSS
 
 Includes a [portfolio](https://alexanderdombroski.github.io/dombroski-wdd331-portfolio/) made in this class
 
@@ -8,3 +8,4 @@ Projects for [WDD-331R](https://byui-cse.github.io/wdd331r/)
 - [Custom Properties and Math Functions](./src/portfolio/unit-0/custom-properties)
 - [Refactoring CSS using modern selectors and nesting](./src/portfolio/unit-1/css-refactoring)
 - [Creating a dynamic styleset for custom font faces](./src/portfolio/unit-1/typography-implementation)
+- [Create a theme system using CUBE CSS and modern CSS archetecture patterns](./src/portfolio/unit-2/theming-system)
