@@ -2,8 +2,8 @@
 
 ## ARCHITECTURE CHOICE:
 
-Choose either [CUBE CSS](https://cube.fyi/#what-does-cube-css-stand-for) or BEM for organizing your CSS.
-Document your choice and follow it consistently throughout.
+- [x] Choose either [CUBE CSS](https://cube.fyi/#what-does-cube-css-stand-for) or BEM for organizing your CSS.
+- [x] Document your choice and follow it consistently throughout.
 
 **CUBE CSS approach:**
 
@@ -12,11 +12,13 @@ Document your choice and follow it consistently throughout.
 - Blocks: Component styles (.card, .button)
 - Exceptions: State variations (add additional classes as needed)
 
+<!--
 **BEM approach:**
 
 - Blocks: Standalone components (.card)
 - Elements: Parts of blocks (.card**title, .card**image)
 - Modifiers: Variations (.card--featured)
+-->
 
 ## ORGANIZATION:
 
@@ -37,10 +39,10 @@ You may create additional CSS files if you prefer to separate:
 
 ## REQUIREMENTS:
 
-1. Define theme system with custom properties
-2. Implement light and dark themes
-3. Support prefers-color-scheme
-4. Use color-mix() for color variations
-5. Create responsive layout
-6. Ensure accessibility (contrast, focus indicators, reduced motion)
-7. Style all components and states
+- [ ] Define theme system with custom properties
+- [ ] Implement light and dark themes
+- [ ] Support prefers-color-scheme
+- [ ] Use color-mix() for color variations
+- [ ] Create responsive layout
+- [ ] Ensure accessibility (contrast, focus indicators, reduced motion)
+- [ ] Style all components and states
