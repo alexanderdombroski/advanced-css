@@ -43,16 +43,16 @@
   --accent-color: #103778;
   --accent2-color: #e3371e;
 
-  --font-dark: #c7d2de;
-  --font-light: #151f30;
-  --background-light: color-mix(in oklab, var(--font-dark) 90%, white 10%);
-  --background-dark: color-mix(in oklab, var(--font-light) 90%, black 10%);
+  --font-on-color: #cfd6de;
+  --font-on-light: #151f30;
+  --background-light: color-mix(in oklab, var(--font-on-color) 70%, white 30%);
+  --background-dark: color-mix(in oklab, var(--font-on-light) 70%, black 30%);
 }
 
 html.dark-theme {
   /* Swapped colors */
-  --font-dark: #151f30;
-  --font-light: #c7d2de;
-  --background-dark: color-mix(in oklab, var(--font-dark) 90%, white 10%);
-  --background-light: color-mix(in oklab, var(--font-light) 90%, black 10%);
+  --font-on-color: #151f30;
+  --font-on-light: #cfd6de;
+  --background-dark: color-mix(in oklab, var(--font-on-light) 70%, white 30%);
+  --background-light: color-mix(in oklab, var(--font-on-color) 70%, black 30%);
 }
