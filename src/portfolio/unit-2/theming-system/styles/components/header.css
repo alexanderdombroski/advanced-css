@@ -1,6 +1,7 @@
 .site-header {
   background-color: var(--primary-color);
   padding-inline: var(--layout-lg);
+
   & .header-content {
     height: 7rem;
 
@@ -11,6 +12,7 @@
     align-items: center;
 
     & h1 {
+      color: var(--primary-dark);
       margin-top: 0;
     }
 
