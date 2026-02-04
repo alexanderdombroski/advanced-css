@@ -1,6 +1,7 @@
 .product-grid {
   display: grid;
   grid-template-columns: 1fr;
+  justify-items: center;
   gap: var(--layout-md);
 
   @media (min-width: 20rem) {

@@ -18,8 +18,7 @@ button {
     );
   }
 
-  &:focus,
-  &.active {
+  &:focus {
     background-color: color-mix(
       in oklab,
       var(--background-light) 80%,
