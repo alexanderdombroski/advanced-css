@@ -11,3 +11,6 @@
 @import "base/global.css" layer(base);
 
 @import "layout/flow.css" layer(layout);
+
+@import "components/header.css" layer(components);
+@import "components/footer.css" layer(components);
