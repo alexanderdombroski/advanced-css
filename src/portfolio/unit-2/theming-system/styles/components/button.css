@@ -1,0 +1,31 @@
+button {
+  corner-shape: squircle;
+  border-radius: 0.5rem;
+  border-color: var(--font-on-light);
+  background-color: var(--background-light);
+  padding: var(--layout-sm);
+
+  &,
+  & > * {
+    color: var(--font-on-light);
+  }
+
+  &:hover {
+    background-color: color-mix(
+      in oklab,
+      var(--background-light) 90%,
+      var(--darken) 10%
+    );
+  }
+
+  &:focus,
+  &.active {
+    background-color: color-mix(
+      in oklab,
+      var(--background-light) 80%,
+      var(--darken) 20%
+    );
+  }
+
+  box-shadow: 2px 2px 5px var(--primary-dark);
+}

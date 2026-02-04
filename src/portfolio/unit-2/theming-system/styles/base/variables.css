@@ -45,17 +45,38 @@
 
   --primary-light: oklch(86.2% 0.012 245.24);
   --primary-dark: oklch(18.23% 0.043 255.45);
+  --darken: black;
+  --lighten: white;
 
   --font-on-color: var(--primary-light);
   --font-on-light: var(--primary-dark);
-  --background-light: color-mix(in oklab, var(--primary-light) 70%, white 30%);
-  --background-dark: color-mix(in oklab, var(--primary-dark) 70%, black 30%);
+  --background-light: color-mix(
+    in oklab,
+    var(--primary-light) 70%,
+    var(--lighten) 30%
+  );
+  --background-dark: color-mix(
+    in oklab,
+    var(--primary-dark) 70%,
+    var(--darken) 30%
+  );
 }
 
 html.dark-theme {
   /* Swapped colors */
+  --darken: white;
+  --lighten: black;
+
   --font-on-color: var(--primary-dark);
   --font-on-light: var(--primary-light);
-  --background-dark: color-mix(in oklab, var(--primary-light) 70%, white 30%);
-  --background-light: color-mix(in oklab, var(--primary-dark) 70%, black 30%);
+  --background-dark: color-mix(
+    in oklab,
+    var(--primary-light) 70%,
+    var(--darken) 30%
+  );
+  --background-light: color-mix(
+    in oklab,
+    var(--primary-dark) 70%,
+    var(--lighten) 30%
+  );
 }
