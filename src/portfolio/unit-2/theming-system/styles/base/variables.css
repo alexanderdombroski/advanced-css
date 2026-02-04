@@ -38,13 +38,13 @@
   ); /* 24px -> 32px (320px -> 1024px) */
 
   /* Colors */
-  --primary-color: #0593a2;
-  --secondary-color: #ff7a48;
-  --accent-color: #103778;
-  --accent2-color: #e3371e;
+  --primary-color: oklch(58.33% 0.126 211.53);
+  --secondary-color: oklch(68.51% 0.187 39.55);
+  --accent-color: oklch(29.68% 0.126 261.26);
+  --accent2-color: oklch(51.81% 0.228 32.5);
 
-  --primary-light: #cfd6de;
-  --primary-dark: #151f30;
+  --primary-light: oklch(86.2% 0.012 245.24);
+  --primary-dark: oklch(18.23% 0.043 255.45);
 
   --font-on-color: var(--primary-light);
   --font-on-light: var(--primary-dark);
