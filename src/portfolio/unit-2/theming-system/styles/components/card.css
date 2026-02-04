@@ -1,0 +1,31 @@
+.product-card {
+  display: flex;
+  flex-direction: column;
+
+  & .product-image {
+    border: var(--font-on-light) 0.2rem solid;
+  }
+
+  & .product-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    & .product-description {
+      margin-bottom: var(--layout-sm);
+    }
+
+    & .product-footer {
+      display: flex;
+      flex-wrap: nowrap;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+
+      & .product-price {
+        font-weight: bold;
+      }
+    }
+  }
+}

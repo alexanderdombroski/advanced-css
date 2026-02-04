@@ -1,6 +1,6 @@
 button {
   corner-shape: squircle;
-  border-radius: 0.5rem;
+  border-radius: var(--border-radius);
   border-color: var(--font-on-light);
   background-color: var(--background-light);
   padding: var(--layout-sm);

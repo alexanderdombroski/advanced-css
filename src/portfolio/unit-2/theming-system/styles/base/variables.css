@@ -37,6 +37,8 @@
     2rem
   ); /* 24px -> 32px (320px -> 1024px) */
 
+  --border-radius: 0.5rem;
+
   /* Colors */
   --primary-color: oklch(58.33% 0.126 211.53);
   --secondary-color: oklch(68.51% 0.187 39.55);

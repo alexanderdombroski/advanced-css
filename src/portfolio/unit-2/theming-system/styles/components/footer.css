@@ -2,6 +2,7 @@
   height: 5rem;
   background-color: var(--primary-color);
   align-content: center;
+  margin-top: var(--layout-lg);
 
   & .footer-text {
     margin-top: 0;
