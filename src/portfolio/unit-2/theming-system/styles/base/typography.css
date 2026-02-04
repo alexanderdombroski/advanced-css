@@ -22,4 +22,7 @@
 
 :where(h1, h2, h3, h4, h5, h6, h6, p, span) {
   color: var(--font-on-light);
+  font-family:
+    "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }

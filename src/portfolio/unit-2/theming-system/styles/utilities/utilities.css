@@ -1,3 +1,7 @@
 .active {
   background-color: var(--secondary-color);
 }
+
+.visually-hidden {
+  display: none;
+}

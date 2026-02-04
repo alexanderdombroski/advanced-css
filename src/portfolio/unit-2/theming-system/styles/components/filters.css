@@ -1,0 +1,7 @@
+.filters {
+  margin-block: var(--layout-md);
+
+  .filter-buttons button {
+    margin-inline: var(--layout-xs);
+  }
+}
