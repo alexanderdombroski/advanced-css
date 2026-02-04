@@ -1,6 +1,18 @@
 /* https://color.adobe.com/Water-&-Rust-color-theme-1478205/ */
 
 :root {
+  /* Sizes */
+  --rhythm: 1.2;
+  --font-size-base: 1rem;
+
+  --font-size-sm: calc(var(--font-size-base) / var(--rhythm));
+  --font-size-md: var(--font-size-base);
+  --font-size-lg: calc(var(--font-size-base) * var(--rhythm));
+  --font-size-xl: calc(var(--font-size-lg) * var(--rhythm));
+  --font-size-2xl: calc(var(--font-size-xl) * var(--rhythm));
+  --font-size-3xl: calc(var(--font-size-2xl) * var(--rhythm));
+
+  /* Colors */
   --primary-color: #0593a2;
   --secondary-color: #ff7a48;
   --accent-color: #103778;
