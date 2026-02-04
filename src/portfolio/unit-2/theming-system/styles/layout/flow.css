@@ -2,6 +2,10 @@ body {
   display: flex;
   flex-direction: column;
 
+  & > *:not(header, footer) {
+    margin-inline: var(--layout-lg);
+  }
+
   & footer {
     margin-top: auto;
   }
