@@ -3,6 +3,7 @@
   grid-template-columns: 1fr;
   justify-items: center;
   gap: var(--layout-md);
+  margin-bottom: var(--layout-lg);
 
   @media (min-width: 20rem) {
     grid-template-columns: 1fr 1fr;
