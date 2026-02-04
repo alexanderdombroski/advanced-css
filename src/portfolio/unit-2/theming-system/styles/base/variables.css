@@ -1,11 +1,21 @@
 /* https://color.adobe.com/Water-&-Rust-color-theme-1478205/ */
 
 :root {
-  --primary-color: #e3371e;
+  --primary-color: #0593a2;
   --secondary-color: #ff7a48;
-  --accent-color: #0593a2;
-  --accent2-color: #103778;
+  --accent-color: #103778;
+  --accent2-color: #e3371e;
 
+  --font-dark: #c7d2de;
+  --font-light: #151f30;
+  --background-light: color-mix(in oklab, var(--font-dark) 90%, white 10%);
+  --background-dark: color-mix(in oklab, var(--font-light) 90%, black 10%);
+}
+
+html.dark-theme {
+  /* Swapped colors */
   --font-dark: #151f30;
   --font-light: #c7d2de;
+  --background-dark: color-mix(in oklab, var(--font-dark) 90%, white 10%);
+  --background-light: color-mix(in oklab, var(--font-light) 90%, black 10%);
 }
